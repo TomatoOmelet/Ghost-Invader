@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Stats")]
     public float speed;
     public float halfWidth;
+    private int health;
+    private bool canShoot = true;
+    public GameObject bullet;
     public Camera ourCamera;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +21,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        CheckFire();
     }
 
     public void Move()
@@ -34,5 +39,27 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(ourCamera.ScreenToWorldPoint(new Vector3(Screen.width,0,0)).x - halfWidth, transform.position.y, transform.position.z);
         }
+    }
+
+    public void CheckFire()
+    {
+        if(Input.GetButtonDown("Fire") && canShoot)
+        {
+            canShoot = false;
+            Instantiate(bullet, transform.position, Quaternion.identity);
+        }
+    }
+
+    public void ResetBullet()
+    {
+        canShoot = true;
+    }
+
+    public void GetHurt()
+    {
+        --health;
+        //update UI
+        //die
+
     }
 }
