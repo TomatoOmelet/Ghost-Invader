@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     public void CheckFire()
     {
-        if(Input.GetButtonDown("Fire") && canShoot)
+        if(Input.GetButtonDown("Fire1") && canShoot)
         {
             canShoot = false;
             Instantiate(bullet, transform.position, Quaternion.identity);
