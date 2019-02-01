@@ -1,18 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void RetryButton()
     {
-        
+        SceneManager.LoadScene("Game");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MainMenuButton()
     {
-        
+        SceneManager.LoadScene("MainMenu");
     }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
+    public void GameOver()
+    {
+        gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
 }

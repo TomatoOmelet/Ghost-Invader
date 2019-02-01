@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private int health;
     private bool canShoot = true;
     public GameObject bullet;
+    public GameOverPanel gameOverPanel;
     public Camera ourCamera;
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,11 @@ public class Player : MonoBehaviour
     {
         --health;
         //update UI
-        //die
 
+        //die
+        if(health <= 0)
+        {
+            gameOverPanel.GameOver();
+        }
     }
 }
