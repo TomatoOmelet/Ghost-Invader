@@ -19,14 +19,6 @@ public class PlayerBullet : MonoBehaviour
         CheckBound();
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "Enemy")
-        {
-            //kill kill kill
-            Destroy(gameObject);
-        }
-    }
 
     public void CheckBound()
     {
