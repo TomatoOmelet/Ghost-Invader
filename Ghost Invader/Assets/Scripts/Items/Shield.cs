@@ -29,6 +29,9 @@ public class Shield : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }else if(other.tag == "Enmey")
+        {
+            Destroy(gameObject);
         }
     }
 }
