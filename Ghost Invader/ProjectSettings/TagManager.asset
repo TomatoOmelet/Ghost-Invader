@@ -8,6 +8,8 @@ TagManager:
   - RightBound
   - LeftBound
   - LowerBound
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
