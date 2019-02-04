@@ -23,5 +23,14 @@ public class Enemy : MonoBehaviour
         {
             enemyManager.switchDirection();
         }
+        if (collision.gameObject.tag == "LowerBound")
+        {
+            gameOver();
+        }
+    }
+
+    void gameOver()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 }
