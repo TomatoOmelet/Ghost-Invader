@@ -12,7 +12,6 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         uiManager = GameObject.FindObjectOfType<UIManager>();
         uiManager.UpdateScore(score);
-        AddScore(500);
     }
 
     // Update is called once per frame
