@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    
-    public bool canMoveRight = true;
-    public int enemySpeed = 1;
-    public int down = -1;
-
     public Enemy enemyPrefab;
+
+    [Header("Speed Info")]
+    public bool canMoveRight = true;
+    public float enemySpeed = 1.0f;
+    public int down = -1;
+    public float speedUpAmount;
 
     [Header("Enemy Array Info")]
     public int ColumnLength;
@@ -19,13 +20,23 @@ public class EnemyManager : MonoBehaviour
     public float colSpace;
     public float rowSpace;
     public Enemy[,] enemyArray;
+    public int enemyCount;
 
+    [Header("Shoot Info")]
+    public float waitTime;
+    public float maxWaitTime;
+    public GameObject bullet;
 
 
     void Awake()
     {
+        instantiateEnemyArray();
+    }
+    
+    void instantiateEnemyArray()
+    {
         enemyArray = new Enemy[ColumnLength, RowHeight];
-        
+
         for (int i = 0; i < ColumnLength; ++i)
         {
             for (int j = 0; j < RowHeight; ++j)
@@ -34,11 +45,40 @@ public class EnemyManager : MonoBehaviour
                 enemyArray[i, j].transform.SetParent(transform);
             }
         }
+
+        enemyCount = ColumnLength * RowHeight;
     }
 
     void Update()
     {
         move();
+        shoot();
+    }
+
+    void shoot()
+    {
+        if(Time.deltaTime > 0)
+        {
+            if (waitTime <= 0)
+            {
+                waitTime = Random.value * maxWaitTime;
+                int randomCol = (int)(Random.value * (ColumnLength - 1));
+                for (int i = 0; i < RowHeight; ++i)
+                {
+                    if (enemyArray[randomCol, i] != null)
+                    {
+                        Instantiate(bullet, enemyArray[randomCol, i].transform.position, Quaternion.identity);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                --waitTime;
+            }
+        }
+            
+
     }
 
     void move()
@@ -53,9 +93,23 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void switchDirection()
+    public void moveRight()
+    {
+        canMoveRight = true;
+    }
+
+    public void moveLeft()
+    {
+        canMoveRight = false;
+    }
+
+    public void moveDown()
     {
         transform.position += new Vector3(0, down * Time.deltaTime, 0);
-        canMoveRight = !canMoveRight;
+    }
+
+    public void speedUp()
+    {
+        enemySpeed += speedUpAmount;
     }
 }

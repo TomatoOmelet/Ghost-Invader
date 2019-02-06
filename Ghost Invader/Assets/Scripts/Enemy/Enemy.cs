@@ -19,18 +19,40 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("OnCollisionEnter2D");
-        if (collision.gameObject.tag == "RightBound" || collision.gameObject.tag == "LeftBound")
+        if (collision.gameObject.tag == "RightBound")
         {
-            enemyManager.switchDirection();
+            enemyManager.moveDown();
+            enemyManager.moveLeft();
         }
-        if (collision.gameObject.tag == "LowerBound")
+        else if (collision.gameObject.tag == "LeftBound")
         {
-            gameOver();
+            enemyManager.moveDown();
+            enemyManager.moveRight();
         }
     }
 
     void gameOver()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "PlayerBullet")
+        {
+            Destroy(col.gameObject);
+            enemyManager.speedUp();
+            getHurt();
+        }
+        else if(col.gameObject.tag == "LowerBound")
+        {
+            gameOver();
+        }
+        
+    }
+
+    void getHurt()
+    {
+        Destroy(gameObject);    
     }
 }
