@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int enemyVal;
     public EnemyManager enemyManager;
 
     void Start()
@@ -15,20 +16,9 @@ public class Enemy : MonoBehaviour
     {
         
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
+    public void attachScore(int num)
     {
-        Debug.Log("OnCollisionEnter2D");
-        if (collision.gameObject.tag == "RightBound")
-        {
-            enemyManager.moveDown();
-            enemyManager.moveLeft();
-        }
-        else if (collision.gameObject.tag == "LeftBound")
-        {
-            enemyManager.moveDown();
-            enemyManager.moveRight();
-        }
+        enemyVal = num;
     }
 
     void gameOver()
@@ -40,15 +30,26 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "PlayerBullet")
         {
+            Debug.LogFormat("Enemy Value: {0}", enemyVal);
             Destroy(col.gameObject);
-            enemyManager.speedUp();
+            //enemyManager.speedUp();
             getHurt();
         }
         else if(col.gameObject.tag == "LowerBound")
         {
             gameOver();
         }
-        
+        else if (col.gameObject.tag == "RightBound")
+        {
+            enemyManager.moveDown();
+            enemyManager.moveLeft();
+        }
+        else if (col.gameObject.tag == "LeftBound")
+        {
+            enemyManager.moveDown();
+            enemyManager.moveRight();
+        }
+
     }
 
     void getHurt()

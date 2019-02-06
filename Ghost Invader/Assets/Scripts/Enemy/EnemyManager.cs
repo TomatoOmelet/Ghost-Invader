@@ -43,10 +43,27 @@ public class EnemyManager : MonoBehaviour
             {
                 enemyArray[i, j] = Instantiate(enemyPrefab, new Vector3(colStart + colSpace * i, rowStart + rowSpace * j, 0), Quaternion.identity);
                 enemyArray[i, j].transform.SetParent(transform);
+                assignEnemyValue(i, j);
             }
         }
-
         enemyCount = ColumnLength * RowHeight;
+    }
+
+    void assignEnemyValue(int height, int row)
+    {
+        Enemy enemy = enemyArray[height, row].transform.GetComponent<Enemy>();
+        if (row == 0 || row == 1)
+        {
+            enemy.enemyVal = 10;
+        }
+        else if (row == 2 || row == 3)
+        {
+            enemy.enemyVal = 20;
+        }
+        else if (row == 4)
+        {
+            enemy.enemyVal = 40;
+        }
     }
 
     void Update()
@@ -95,12 +112,21 @@ public class EnemyManager : MonoBehaviour
 
     public void moveRight()
     {
-        canMoveRight = true;
+        if (!canMoveRight)
+        {
+            speedUp();
+            canMoveRight = true;
+
+        }
     }
 
     public void moveLeft()
     {
-        canMoveRight = false;
+        if (canMoveRight)
+        {
+            speedUp();
+            canMoveRight = false;
+        }   
     }
 
     public void moveDown()
