@@ -30,7 +30,8 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "PlayerBullet")
         {
-            Debug.LogFormat("Enemy Value: {0}", enemyVal);
+            //Debug.LogFormat("Enemy Value: {0}", enemyVal);
+            GameObject.FindObjectOfType<LevelManager>().AddScore(enemyVal);
             Destroy(col.gameObject);
             //enemyManager.speedUp();
             getHurt();
