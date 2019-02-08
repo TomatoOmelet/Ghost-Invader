@@ -1228,7 +1228,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 20547633}
   canMoveRight: 1
   enemySpeed: 1.5
-  down: -12
+  down: -24
   speedUpAmount: 0.25
   ColumnLength: 11
   RowHeight: 5
@@ -1238,7 +1238,9 @@ MonoBehaviour:
   rowSpace: 1.5
   enemyCount: 0
   waitTime: 0
-  maxWaitTime: 120
+  minWaitTime: 20
+  maxWaitTime: 200
+  shootSpeedUp: 20
   bullet: {fileID: 8432608048136053351, guid: c8b1b8cca9cdbb04387c940094de9e20, type: 3}
   posColList: 
   posCol: 0

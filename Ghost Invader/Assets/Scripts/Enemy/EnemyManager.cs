@@ -25,7 +25,9 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Shoot Info")]
     public float waitTime;
+    public float minWaitTime = 20;
     public float maxWaitTime;
+    public float shootSpeedUp;
     public GameObject bullet;
     public List<int> posColList;
     public int posCol;
@@ -77,10 +79,24 @@ public class EnemyManager : MonoBehaviour
         gameOverPanel.GameOver();
     }
 
+    public void winLevel()
+    {
+        if(enemyCount == 0)
+        {
+            gameOverPanel.GameOver();
+        }
+    }
+
     void Update()
     {
         move();
         shoot();
+        winLevel();
+    }
+
+    public void killEnemy()
+    {
+        --enemyCount;
     }
 
     void shoot()
@@ -130,11 +146,17 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    void levelDifficultyIncrease()
+    {
+        speedUp();
+        shootMore();
+
+    }
     public void moveRight()
     {
         if (!canMoveRight)
         {
-            speedUp();
+            levelDifficultyIncrease();
             canMoveRight = true;
             moveDown();
 
@@ -145,7 +167,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (canMoveRight)
         {
-            speedUp();
+            levelDifficultyIncrease();
             canMoveRight = false;
             moveDown();
         }   
@@ -159,5 +181,14 @@ public class EnemyManager : MonoBehaviour
     public void speedUp()
     {
         enemySpeed += speedUpAmount;
+    }
+
+    public void shootMore()
+    {
+        maxWaitTime = maxWaitTime - shootSpeedUp;
+        if(maxWaitTime < minWaitTime)
+        {
+            maxWaitTime = minWaitTime;
+        }
     }
 }
