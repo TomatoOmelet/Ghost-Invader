@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     public void Move()
     {
         //move ment
-        GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * 60 * Time.deltaTime ,0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed,0);
         //boundary
         //check left
         if(ourCamera.WorldToScreenPoint(transform.position - new Vector3(halfWidth, 0, 0)).x < 0)
