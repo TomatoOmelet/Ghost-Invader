@@ -51,7 +51,7 @@ public class EnemyManager : MonoBehaviour
             {
                 enemyArray[i, j] = Instantiate(enemyPrefab, new Vector3(colStart + colSpace * i, rowStart + rowSpace * j, 0), Quaternion.identity);
                 enemyArray[i, j].transform.SetParent(transform);
-                assignEnemyValue(i, j);
+                assignEnemyInfo(i, j);
             }
             posColList.Add(i);
         }
@@ -60,20 +60,24 @@ public class EnemyManager : MonoBehaviour
         transform.position = transform.position - new Vector3(0, LevelManager.instance.GetLevel() - 1,0);
     }
 
-    void assignEnemyValue(int height, int row)
+    void assignEnemyInfo(int height, int row)
     {
         Enemy enemy = enemyArray[height, row].transform.GetComponent<Enemy>();
         if (row == 0 || row == 1)
         {
             enemy.enemyVal = 10;
+            enemy.transform.localScale = enemy.transform.localScale + new Vector3(0.2f, 0.2f, 0);
         }
         else if (row == 2 || row == 3)
         {
             enemy.enemyVal = 20;
+            enemy.transform.localScale = enemy.transform.localScale + new Vector3(0.1f, 0.1f, 0);
+            enemy.GetComponent<SpriteRenderer>().color = Color.blue;//new Color32(255, 160, 160, 255);
         }
         else if (row == 4)
         {
             enemy.enemyVal = 40;
+            enemy.GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
 
