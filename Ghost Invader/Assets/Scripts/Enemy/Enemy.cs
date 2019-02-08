@@ -21,11 +21,6 @@ public class Enemy : MonoBehaviour
         enemyVal = num;
     }
 
-    void gameOver()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
-    }
-
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "PlayerBullet")
@@ -36,7 +31,7 @@ public class Enemy : MonoBehaviour
         }
         else if(col.gameObject.tag == "LowerBound")
         {
-            gameOver();
+            enemyManager.gameOver();
         }
         else if (col.gameObject.tag == "RightBound")
         {

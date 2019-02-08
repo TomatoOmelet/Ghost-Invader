@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public Enemy enemyPrefab;
+    public GameOverPanel gameOverPanel;
 
     [Header("Speed Info")]
     public bool canMoveRight = true;
@@ -22,13 +23,13 @@ public class EnemyManager : MonoBehaviour
     public Enemy[,] enemyArray;
     public int enemyCount;
 
-    public List<int> posColList;
-    public int posCol;
-
     [Header("Shoot Info")]
     public float waitTime;
     public float maxWaitTime;
     public GameObject bullet;
+    public List<int> posColList;
+    public int posCol;
+
 
 
     void Awake()
@@ -69,6 +70,11 @@ public class EnemyManager : MonoBehaviour
         {
             enemy.enemyVal = 40;
         }
+    }
+
+    public void gameOver()
+    {
+        gameOverPanel.GameOver();
     }
 
     void Update()
