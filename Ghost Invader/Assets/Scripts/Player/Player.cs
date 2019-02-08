@@ -7,10 +7,11 @@ public class Player : MonoBehaviour
     [Header("Stats")]
     public float speed;
     public float halfWidth;
-    private int health;
+    private int health = 3;
     private bool canShoot = true;
     public GameObject bullet;
     public GameOverPanel gameOverPanel;
+    public UIManager uiManager;
     public Camera ourCamera;
     // Start is called before the first frame update
     void Start()
@@ -60,11 +61,21 @@ public class Player : MonoBehaviour
     {
         --health;
         //update UI
-
+        uiManager.UpdateHealth(health);
         //die
         if(health <= 0)
         {
             gameOverPanel.GameOver();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "EnemyBullet")
+        {
+            Destroy(other.gameObject);
+            GetHurt();
+        }
+    }
+
 }

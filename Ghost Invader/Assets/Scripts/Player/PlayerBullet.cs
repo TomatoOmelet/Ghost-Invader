@@ -30,7 +30,9 @@ public class PlayerBullet : MonoBehaviour
 
     public void OnDestroy()
     {
-        GameObject.FindObjectOfType<Player>().ResetBullet();
+        Player player = GameObject.FindObjectOfType<Player>();
+        if(player!= null)
+            player.ResetBullet();
     }
 
 }
