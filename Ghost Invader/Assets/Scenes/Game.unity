@@ -2128,6 +2128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 419545754}
+  gameOverPanel: {fileID: 1827464077}
+  winPanel: {fileID: 1578073579}
 --- !u!114 &1391925258
 MonoBehaviour:
   m_ObjectHideFlags: 0

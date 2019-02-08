@@ -6,6 +6,8 @@ public class PauseManager : MonoBehaviour
 {
     bool isPaused = false;
     public GameObject pausePanel;
+    public GameObject gameOverPanel;
+    public GameObject winPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused == false)
+            if(isPaused == false && gameOverPanel.activeSelf == false && winPanel.activeSelf == false)
             {
                 pause();
             }
