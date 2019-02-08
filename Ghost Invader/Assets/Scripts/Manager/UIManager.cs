@@ -6,18 +6,27 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Text scoreText;
+    public Text levelText;
     public GameObject[] heartUIList;
     // Start is called before the first frame update
     void Start()
     {
         //give levelmanager assess to itself
-        GameObject.FindObjectOfType<LevelManager>().uiManager = this;
+        LevelManager.instance.uiManager = this;
+        //update level info
+        levelText.text = "Level: " + LevelManager.instance.GetLevel();
+        UpdateScore(LevelManager.instance.GetScore());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void NextLevelButton()
+    {
+        LevelManager.instance.GoToNewLevel();
     }
 
     public void UpdateScore(int value)

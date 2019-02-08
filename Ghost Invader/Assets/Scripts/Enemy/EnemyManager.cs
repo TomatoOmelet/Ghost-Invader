@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     public Enemy enemyPrefab;
     public GameOverPanel gameOverPanel;
+    public GameObject winPanel;
 
     [Header("Speed Info")]
     public bool canMoveRight = true;
@@ -55,6 +56,8 @@ public class EnemyManager : MonoBehaviour
             posColList.Add(i);
         }
         enemyCount = ColumnLength * RowHeight;
+        //move down depends on the level
+        transform.position = transform.position - new Vector3(0, LevelManager.instance.GetLevel() - 1,0);
     }
 
     void assignEnemyValue(int height, int row)
@@ -82,8 +85,10 @@ public class EnemyManager : MonoBehaviour
     public void winLevel()
     {
         if(enemyCount == 0)
+        //if(enemyCount < 50)
         {
-            gameOverPanel.GameOver();
+            Time.timeScale = 0;
+            winPanel.SetActive(true);    
         }
     }
 
@@ -91,7 +96,6 @@ public class EnemyManager : MonoBehaviour
     {
         move();
         shoot();
-        winLevel();
     }
 
     public void killEnemy()

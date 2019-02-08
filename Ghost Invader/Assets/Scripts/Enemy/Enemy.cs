@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
     void getHurt()
     {
         enemyManager.killEnemy();
+        enemyManager.winLevel();
         Destroy(gameObject);    
     }
 }

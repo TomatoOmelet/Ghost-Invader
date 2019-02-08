@@ -5,21 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public static bool hasManager = false;
+    public static LevelManager instance = null;
     private int score = 0;
+    private int level = 1;
     public UIManager uiManager;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if(hasManager == false)
+        if(instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            hasManager = true;
+            instance = this;
         }
         else
             Destroy(gameObject);
-        uiManager = GameObject.FindObjectOfType<UIManager>();
-        uiManager.UpdateScore(score);
     }
 
     // Update is called once per frame
@@ -45,16 +44,27 @@ public class LevelManager : MonoBehaviour
 
     public void GoToNewLevel()
     {
+        Time.timeScale = 1;
+        ++level;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        uiManager = GameObject.FindObjectOfType<UIManager>();
-        uiManager.UpdateScore(score);
     }
 
     public void RestartLevel()
     {
         score = 0;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
 
 }
