@@ -30,9 +30,7 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "PlayerBullet")
         {
-            Debug.LogFormat("Enemy Value: {0}", enemyVal);
             Destroy(col.gameObject);
-            //enemyManager.speedUp();
             getHurt();
         }
         else if(col.gameObject.tag == "LowerBound")
@@ -41,12 +39,10 @@ public class Enemy : MonoBehaviour
         }
         else if (col.gameObject.tag == "RightBound")
         {
-            enemyManager.moveDown();
             enemyManager.moveLeft();
         }
         else if (col.gameObject.tag == "LeftBound")
         {
-            enemyManager.moveDown();
             enemyManager.moveRight();
         }
 

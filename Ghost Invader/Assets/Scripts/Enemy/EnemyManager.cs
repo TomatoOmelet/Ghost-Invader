@@ -22,6 +22,9 @@ public class EnemyManager : MonoBehaviour
     public Enemy[,] enemyArray;
     public int enemyCount;
 
+    public List<int> posColList;
+    public int posCol;
+
     [Header("Shoot Info")]
     public float waitTime;
     public float maxWaitTime;
@@ -36,7 +39,8 @@ public class EnemyManager : MonoBehaviour
     void instantiateEnemyArray()
     {
         enemyArray = new Enemy[ColumnLength, RowHeight];
-
+        posColList = new List<int>();
+        posCol = ColumnLength;
         for (int i = 0; i < ColumnLength; ++i)
         {
             for (int j = 0; j < RowHeight; ++j)
@@ -45,6 +49,7 @@ public class EnemyManager : MonoBehaviour
                 enemyArray[i, j].transform.SetParent(transform);
                 assignEnemyValue(i, j);
             }
+            posColList.Add(i);
         }
         enemyCount = ColumnLength * RowHeight;
     }
@@ -78,15 +83,24 @@ public class EnemyManager : MonoBehaviour
         {
             if (waitTime <= 0)
             {
+                bool shoot = false;
                 waitTime = Random.value * maxWaitTime;
-                int randomCol = (int)(Random.value * (ColumnLength - 1));
+                //int randomCol = posColList.ElementAt((int)(Random.value * (posCol - 1)));
+                int randomCol = posColList[(int)(Random.value * (posCol - 1))];
                 for (int i = 0; i < RowHeight; ++i)
                 {
                     if (enemyArray[randomCol, i] != null)
                     {
                         Instantiate(bullet, enemyArray[randomCol, i].transform.position, Quaternion.identity);
+                        shoot = true;
                         break;
                     }
+                }
+                if(shoot == false)
+                {
+                    posColList.Remove(randomCol);
+                    waitTime = 0;
+                    --posCol;
                 }
             }
             else
@@ -116,6 +130,7 @@ public class EnemyManager : MonoBehaviour
         {
             speedUp();
             canMoveRight = true;
+            moveDown();
 
         }
     }
@@ -126,6 +141,7 @@ public class EnemyManager : MonoBehaviour
         {
             speedUp();
             canMoveRight = false;
+            moveDown();
         }   
     }
 

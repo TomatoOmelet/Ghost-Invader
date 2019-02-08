@@ -656,8 +656,8 @@ MonoBehaviour:
     type: 3}
   canMoveRight: 1
   enemySpeed: 1.5
-  down: -3
-  speedUpAmount: 0.5
+  down: -6
+  speedUpAmount: 0.25
   ColumnLength: 11
   RowHeight: 5
   colStart: -10.5
@@ -665,6 +665,8 @@ MonoBehaviour:
   colSpace: 1.25
   rowSpace: 1.5
   enemyCount: 0
+  posColList: 
+  posCol: 0
   waitTime: 0
   maxWaitTime: 120
   bullet: {fileID: 8432608048136053351, guid: c8b1b8cca9cdbb04387c940094de9e20, type: 3}
@@ -1070,7 +1072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &747069120
 RectTransform:
   m_ObjectHideFlags: 0
