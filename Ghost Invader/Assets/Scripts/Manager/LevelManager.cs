@@ -55,6 +55,8 @@ public class LevelManager : MonoBehaviour
     public void RestartLevel()
     {
         score = 0;
+        health = 3;
+        level = 1;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
