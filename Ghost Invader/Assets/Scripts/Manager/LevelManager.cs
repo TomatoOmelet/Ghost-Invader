@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance = null;
     private int score = 0;
     private int level = 1;
+    [System.NonSerialized]public int health = 3;
+
     public UIManager uiManager;
     // Start is called before the first frame update
     void Awake()
@@ -46,6 +48,7 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = 1;
         ++level;
+        ++health;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

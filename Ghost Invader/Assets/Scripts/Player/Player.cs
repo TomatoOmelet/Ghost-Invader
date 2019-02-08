@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     [Header("Stats")]
     public float speed;
     public float halfWidth;
-    private int health = 3;
     private bool canShoot = true;
     public GameObject bullet;
     public GameOverPanel gameOverPanel;
@@ -59,11 +58,11 @@ public class Player : MonoBehaviour
 
     public void GetHurt()
     {
-        --health;
+        --LevelManager.instance.health;
         //update UI
-        uiManager.UpdateHealth(health);
+        uiManager.UpdateHealth(LevelManager.instance.health);
         //die
-        if(health <= 0)
+        if(LevelManager.instance.health <= 0)
         {
             gameOverPanel.GameOver();
         }
