@@ -10,6 +10,7 @@ TagManager:
   - LowerBound
   - PlayerBullet
   - EnemyBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

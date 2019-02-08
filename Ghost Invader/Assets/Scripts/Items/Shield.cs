@@ -29,7 +29,7 @@ public class Shield : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-        }else if(other.tag == "Enmey")
+        }else if(other.tag == "Enemy")
         {
             Destroy(gameObject);
         }
