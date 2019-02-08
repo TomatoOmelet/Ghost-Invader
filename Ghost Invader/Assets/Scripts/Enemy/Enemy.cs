@@ -29,7 +29,8 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "PlayerBullet")
-        {
+        { 
+            GameObject.FindObjectOfType<LevelManager>().AddScore(enemyVal);
             Destroy(col.gameObject);
             getHurt();
         }

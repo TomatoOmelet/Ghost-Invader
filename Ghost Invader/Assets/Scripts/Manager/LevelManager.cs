@@ -50,4 +50,11 @@ public class LevelManager : MonoBehaviour
         uiManager.UpdateScore(score);
     }
 
+    public void RestartLevel()
+    {
+        score = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+    }
+
 }

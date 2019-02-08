@@ -7,7 +7,7 @@ public class GameOverPanel : MonoBehaviour
 {
     public void RetryButton()
     {
-        SceneManager.LoadScene("Game");
+        GameObject.FindObjectOfType<LevelManager>().RestartLevel();
     }
 
     public void MainMenuButton()
