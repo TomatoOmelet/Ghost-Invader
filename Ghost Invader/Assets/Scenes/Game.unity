@@ -1481,8 +1481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UFO: {fileID: 5290098482070760363, guid: aad6e6df5b10db347bbeeb15f5cc24ab, type: 3}
   initialWait: 10
-  minWaitTime: 10
-  maxWaitTime: 15
+  minWaitTime: 15
+  maxWaitTime: 20
 --- !u!1 &1029936498
 GameObject:
   m_ObjectHideFlags: 0
