@@ -9,6 +9,7 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody2D>().velocity = velocity;
+        Destroy(gameObject, 15f);
     }
 
     void Update()
@@ -28,10 +29,10 @@ public class EnemyBullet : MonoBehaviour
         //    Destroy(gameObject);
         //    //transform.position += new Vector3(enemySpeed * Time.deltaTime, 0, 0);
         //}
-        if (col.gameObject.tag == "LowerBound")
-        {
-            Destroy(gameObject);
-        }
+        //if (col.gameObject.tag == "LowerBound")
+        //{
+        //    Destroy(gameObject);
+        //}
 
     }
 }
