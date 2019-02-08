@@ -1117,7 +1117,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1325,6 +1325,8 @@ MonoBehaviour:
   colSpace: 1.25
   rowSpace: 1.5
   enemyCount: 0
+  posColList: 
+  posCol: 0
   waitTime: 0
   maxWaitTime: 120
   bullet: {fileID: 8432608048136053351, guid: c8b1b8cca9cdbb04387c940094de9e20, type: 3}
@@ -1433,6 +1435,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807404561084791280, guid: 34ec6fdaad2123040b5e06797c6c57d3,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807404561084791280, guid: 34ec6fdaad2123040b5e06797c6c57d3,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807404561084791280, guid: 34ec6fdaad2123040b5e06797c6c57d3,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807404561084791280, guid: 34ec6fdaad2123040b5e06797c6c57d3,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34ec6fdaad2123040b5e06797c6c57d3, type: 3}
@@ -2962,7 +2984,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

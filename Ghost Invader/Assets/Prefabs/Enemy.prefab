@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466e98f76dcd6cb4e8d981e9246c8f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyVal: 0
   enemyManager: {fileID: 0}
 --- !u!50 &4703250093184042630
 Rigidbody2D:
@@ -126,7 +127,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
